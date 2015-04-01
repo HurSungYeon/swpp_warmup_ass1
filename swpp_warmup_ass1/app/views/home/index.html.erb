@@ -1,1 +1,51 @@
 <h1>Hello World!</h1>
+
+<div id="Message"></div>
+<p>
+Id: <input id="identity" type="text">
+Password: <input id="password" type="text"> <br>
+
+<button id=loginButton>Log in</button>
+
+<button id="registerButton">Add User</button>
+
+
+<script>
+$("#loginButton").click(function(){ loginAjax(); });
+function loginAjax(){
+	$.ajax({
+		type:"POST",
+		url:"home/trylogin",
+		dataType:"JSON",
+		data: {
+			"identity": $("#identity").val(),
+			"password": $("#password").val()
+			},
+		success: function(result){
+				if(result["error"]==-1)
+				{
+					$("#Message").text("The user name should be 5~20 charaters long. Please try again.");
+				}
+				else if(result["error"]==-2)
+				{
+					$("#Message").text("The password should be 8~20 characters long. Please try again.");
+				}
+				else if(result["error"]==-3)
+				{
+					$("#Message").text("This user name already exists. Please try again.");
+				}
+				else if(result["error"]==-4)
+				{
+					$("#Message").text("Invalid username and password combination. Please try again.");
+				}
+				else
+				{
+					$("#Message").text("Successful Input");
+				}
+			},
+		error: function(data){
+
+			}		
+	});
+}
+</script>
