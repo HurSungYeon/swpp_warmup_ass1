@@ -2,7 +2,7 @@
 
 <div id="Message"></div>
 <p>
-Id: <input id="identity" type="text">
+Id: <input id="username" type="text">
 Password: <input id="password" type="text"> <br>
 
 <button id=loginButton>Log in</button>
@@ -15,10 +15,10 @@ $("#loginButton").click(function(){ loginAjax(); });
 function loginAjax(){
 	$.ajax({
 		type:"POST",
-		url:"home/trylogin",
+		url:"home/login",
 		dataType:"JSON",
 		data: {
-			"identity": $("#identity").val(),
+			"username": $("#username").val(),
 			"password": $("#password").val()
 			},
 		success: function(result){

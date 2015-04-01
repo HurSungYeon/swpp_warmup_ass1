@@ -2,8 +2,8 @@ class HomeController < ApplicationController
   def index
   end
 
-  def trylogin
-	@username = params[:identity]
+  def login
+	@username = params[:username]
 	@password = params[:password]
 	if(@username.length<5 or @username.length>20)
 		@errorparam = -1
