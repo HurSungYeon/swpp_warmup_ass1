@@ -6,7 +6,7 @@ class HomeController < ApplicationController
 	@username = params[:username]
 	@password = params[:password]
 
-	@errorparam = -1
+	@errorparam = 0
 
 	render :json => { "error": @errorparam, "username": @username }
   end
@@ -20,9 +20,17 @@ class HomeController < ApplicationController
                 @errorparam = -2
         else
                 @errorparam = 0
+		#redirect_to action: "home/loggedin", json: { username: @username, password: @password }
+		#render :js => "window.location = 'home/loggedin'"
+		#return
         end
 
         render :json => { "error": @errorparam, "username": @username }
 
+  end
+
+  def loggedin
+	@username = params[:username]
+	@password = params[:password]
   end
 end

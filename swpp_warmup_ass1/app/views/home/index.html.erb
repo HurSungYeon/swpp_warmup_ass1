@@ -42,7 +42,8 @@ function registerAjax(){
 				}
 				else
 				{
-					$("#Message").text("Successful Input");
+					//$("#Message").text("Successful Input");
+					window.location.replace("home/loggedin");
 				}
 			},
 		error: function(data){
@@ -79,7 +80,8 @@ function loginAjax(){
                                 }
                                 else
                                 {
-                                        $("#Message").text("Successful Input");
+                                       // $("#Message").text("Successful Input");
+					window.location.replace("home/loggedin");
                                 }
                         },
                 error: function(data){
