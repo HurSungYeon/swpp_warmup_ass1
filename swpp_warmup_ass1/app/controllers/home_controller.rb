@@ -1,4 +1,8 @@
 class HomeController < ApplicationController
+  def first
+	redirect_to action: "index"
+  end
+
   def index
   end
 
@@ -30,7 +34,18 @@ class HomeController < ApplicationController
   end
 
   def loggedin
+	puts @username
 	@username = params[:username]
-	@password = params[:password]
+	puts @username
+	@fuck = "FUCK THIS ERROR"
+	@fuck = @username
+	
+#	render "loggedin"
+#	redirect_to action: "main", username: @username
+#	@password = params[:password]
+  end
+
+  def main
+#	@username = params[:username]
   end
 end
