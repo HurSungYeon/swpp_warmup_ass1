@@ -17,7 +17,7 @@ $("#loginButton").click(function(){ loginAjax(); });
 function registerAjax(){
 	$.ajax({
 		type:"POST",
-		url:"home/signup",
+		url:"/home/signup",
 		dataType:"JSON",
 		data: {
 			"username": $("#username").val(),
@@ -43,7 +43,7 @@ function registerAjax(){
 				else
 				{
 					//$("#Message").text("Successful Input");
-					window.location.replace("home/loggedin");
+					window.location.replace("/home/loggedin");
 				}
 			},
 		error: function(data){
@@ -55,7 +55,7 @@ function registerAjax(){
 function loginAjax(){
         $.ajax({
                 type:"POST",
-                url:"home/login",
+                url:"/home/login",
                 dataType:"JSON",
                 data: {
                         "username": $("#username").val(),
