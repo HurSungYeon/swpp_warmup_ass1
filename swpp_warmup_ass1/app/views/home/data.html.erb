@@ -1,0 +1,18 @@
+<table>
+<tr>
+ <th>Id</th>
+ <th>Password</th>
+ <th>Count</th>
+ </tr>
+
+
+
+<% @data.each do |f| %>
+ <tr>
+ <td><%= f.username %></td>
+ <td><%= f.password %></td>
+ <td><%= f.count %> </td>
+ </tr>
+ <% end %>
+
+</table>

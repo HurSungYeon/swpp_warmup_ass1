@@ -3,6 +3,10 @@ class HomeController < ApplicationController
 	redirect_to action: "index"
   end
 
+  def data
+	@data = User.all
+  end
+
   def index
   end
 
@@ -11,6 +15,16 @@ class HomeController < ApplicationController
 	@password = params[:password]
 
 	@errorparam = 0
+
+	user = User.find_by_username(@username)
+	if(user == nil)
+		@errorparam = -4
+	elsif(user.password != @password)
+		@errorparam = -4
+	else
+		user.count = user.count + 1
+		user.save
+	end
 
 	render :json => { "error": @errorparam, "username": @username }
   end
@@ -24,9 +38,9 @@ class HomeController < ApplicationController
                 @errorparam = -2
         else
                 @errorparam = 0
-		#redirect_to action: "home/loggedin", json: { username: @username, password: @password }
-		#render :js => "window.location = 'home/loggedin'"
-		#return
+		
+		newuser = User.create(username: @username,password: @password, count: 0)
+		newuser.save
         end
 
         render :json => { "error": @errorparam, "username": @username }
@@ -34,12 +48,9 @@ class HomeController < ApplicationController
   end
 
   def loggedin
-	puts @username
 	@username = params[:username]
-	puts @username
-	@fuck = "FUCK THIS ERROR"
-	@fuck = @username
-	
+	user = User.find_by_username(@username)
+	@count = user.count
 #	render "loggedin"
 #	redirect_to action: "main", username: @username
 #	@password = params[:password]

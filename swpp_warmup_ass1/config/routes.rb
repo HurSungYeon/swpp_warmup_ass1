@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post 'home/loggedin'
   get 'home/loggedin'
   get 'home/main'
+  get 'home/data'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
