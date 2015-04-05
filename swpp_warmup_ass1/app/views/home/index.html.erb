@@ -24,28 +24,28 @@ function registerAjax(){
 			"password": $("#password").val()
 			},
 		success: function(result){
-				if(result["error"]==-1)
+				if(result["error_code"]==-1)
 				{
 					$("#Message").text("The user name should be 5~20 charaters long. Please try again.");
 				}
-				else if(result["error"]==-2)
+				else if(result["error_code"]==-2)
 				{
 					$("#Message").text("The password should be 8~20 characters long. Please try again.");
 				}
-				else if(result["error"]==-3)
+				else if(result["error_code"]==-3)
 				{
 					$("#Message").text("This user name already exists. Please try again.");
 				}
-				else if(result["error"]==-4)
+				else if(result["error_code"]==-4)
 				{
 					$("#Message").text("Invalid username and password combination. Please try again.");
 				}
 				else
 				{
 					//$("#Message").text("Successful Input");
-					loginAjax();
+			//		loginAjax();
 				
-			//		window.location.replace("/home/loggedin");
+					window.location.replace("/home/loggedin?username=" + $("#username").val());
 				}
 			},
 		error: function(data){
@@ -64,19 +64,19 @@ function loginAjax(){
                         "password": $("#password").val()
                         },
                 success: function(result){
-                                if(result["error"]==-1)
+                                if(result["error_code"]==-1)
                                 {
                                         $("#Message").text("The user name should be 5~20 charaters long. Please try again.");
                                 }
-                                else if(result["error"]==-2)
+                                else if(result["error_code"]==-2)
                                 {
                                         $("#Message").text("The password should be 8~20 characters long. Please try again.");
                                 }
-                                else if(result["error"]==-3)
+                                else if(result["error_code"]==-3)
                                 {
                                         $("#Message").text("This user name already exists. Please try again.");
                                 }
-                                else if(result["error"]==-4)
+                                else if(result["error_code"]==-4)
                                 {
                                         $("#Message").text("Invalid username and password combination. Please try again.");
                                 }
