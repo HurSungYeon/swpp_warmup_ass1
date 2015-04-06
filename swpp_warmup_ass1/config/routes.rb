@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get 'home/loggedin'
   get 'home/clearData'
   get 'home/data'
+  post '/signup' => 'home#signup'
+  post '/login' => 'home#login'
+  post 'clearData' => 'home#clearData'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
