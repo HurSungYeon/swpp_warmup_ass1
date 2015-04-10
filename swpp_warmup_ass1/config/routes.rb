@@ -1,4 +1,4 @@
-rails.application.routes.draw do
+Rails.application.routes.draw do
   get 'home/index'
   root 'home#first'
 
